@@ -5,13 +5,7 @@ import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ListView;
-
 import java.util.List;
-
-/**
- * Created by Jack on 2018/6/30.
- */
 
 public class MainHeaderAdAdapter extends PagerAdapter{
 

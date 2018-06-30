@@ -8,10 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-/**
- * Created by Jack on 2018/6/30.
- */
-
 public class LoginActivity extends AppCompatActivity{
     protected Button mBtnRegister;
     @Override
