@@ -4,6 +4,8 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.edu.gdmec.android.traveldemo.entity.Menu;
+
 public class DataUtil {
 
     /**
@@ -29,7 +31,7 @@ public class DataUtil {
      * @param names
      * @return
      */
-  /*  public static List<Menu>  getMainMenus(int icons[],String names[]){
+   public static List<Menu>  getMainMenus(int icons[], String names[]){
         List<Menu>  menus=new ArrayList<>();
 
         for (int i = 0; i <icons.length ; i++) {
@@ -37,6 +39,6 @@ public class DataUtil {
             menus.add(menu);
         }
         return menus;
-    }*/
+    }
 }
 

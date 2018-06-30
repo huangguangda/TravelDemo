@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,12 +25,13 @@ public class MainFragment extends Fragment{
     protected ViewPager mVPagerHeaderAd;//广告头
 
     //菜单图标
-    /*protected  int [] menuIons={R.drawable.menu_airport,R.drawable.menu_car
+    protected  int [] menuIons={R.drawable.menu_airport,R.drawable.menu_car
             ,R.drawable.menu_course,R.drawable.menu_hatol,
-            R.drawable.menu_nearby,R.drawable.me_menu_go,
-            R.drawable.menu_ticket,R.drawable.menu_train};*/
-    //protected  String [] menus;
-    //protected RecyclerView mRecycleViewMenu;//主菜单
+            R.drawable.menu_nearby,R.drawable.menu_trav,
+            R.drawable.menu_ticket,R.drawable.menu_train};
+    protected  String [] menus;
+    protected RecyclerView mRecycleViewMenu;//主菜单
+
 
     @Nullable
     @Override
@@ -39,8 +42,20 @@ public class MainFragment extends Fragment{
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mVPagerHeaderAd = getView().findViewById(R.id.vpager_main_header_ad);
-        MainHeaderAdAdapter adAdapter=new MainHeaderAdAdapter(getActivity(),DataUtil.getHeaderAddInfo(getActivity(),icons));
-        mVPagerHeaderAd.setAdapter(adAdapter);
+        menus=this.getActivity().getResources().getStringArray(R.array.main_menu);
+
+        mVPagerHeaderAd= (ViewPager) getView().findViewById(R.id.vpager_main_header_ad);
+        mRecycleViewMenu= (RecyclerView) getView().findViewById(R.id.recycleview_main_menu);
+
+
+        MainHeaderAdAdapter adapter=new MainHeaderAdAdapter(getActivity(), DataUtil.getHeaderAddInfo(getActivity(),icons));
+        mVPagerHeaderAd.setAdapter(adapter);
+
+        //菜单
+        //布局样式
+        mRecycleViewMenu.setLayoutManager(new GridLayoutManager(getActivity(),4));
+        MainMenuAdapter mainMenuAdapter=new MainMenuAdapter(getActivity(),DataUtil.getMainMenus(menuIons,menus));
+        mRecycleViewMenu.setAdapter(mainMenuAdapter);
+
     }
 }
